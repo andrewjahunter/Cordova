@@ -42,8 +42,7 @@
         
 
         function onSuccess(imageData) {
-            alert("got image")
-            alert(imageData);
+            
             var image = document.getElementById('myImage');
             image.src = "data:image/jpeg;base64," + imageData;
         }
@@ -67,12 +66,14 @@
 
             <a data-role="button" href="#" data-theme="e" id="btnPicture">Take Picture</a>
 
-
+            <img alt="" id="myImage" src="" />
         </div>
        
 
 
     </div>
+  
+  
   
 </body>
 </html>
