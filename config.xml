@@ -21,7 +21,9 @@ just to test cordova stuff
         The 'device' permission is required for the 'deviceready' event.
     -->
   <feature name="http://api.phonegap.com/1.0/geolocation"/>
-  <!--<feature name="http://api.phonegap.com/1.0/device" />-->
+  <feature name="http://api.phonegap.com/1.0/camera"/>
+  <feature name="http://api.phonegap.com/1.0/device" />
+  <feature name="http://api.phonegap.com/1.0/file"/>
 
   <!--
         If you do not want any permissions to be added to your app, add the
