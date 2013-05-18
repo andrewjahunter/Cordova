@@ -19,7 +19,14 @@
     <script type="text/javascript" charset="utf-8">
 
         // Wait for Cordova to load
-
+        $(document).ready(function () {
+            $("#btnPicture").on("click", function () {
+                navigator.camera.getPicture(onSuccess, onFail, {
+                    quality: 50,
+                    destinationType: Camera.DestinationType.DATA_URL
+                });
+            });
+        });
 
         function onLoad() {
             document.addEventListener("deviceready", onDeviceReady, false);
@@ -29,6 +36,20 @@
         function onDeviceReady() {
             alert("devide ready event fired")
             
+        }
+
+
+        
+
+        function onSuccess(imageData) {
+            alert("got image")
+            alert(imageData);
+            var image = document.getElementById('myImage');
+            image.src = "data:image/jpeg;base64," + imageData;
+        }
+
+        function onFail(message) {
+            alert('Failed because: ' + message);
         }
 
     </script>
@@ -44,7 +65,7 @@
         <div data-role="content"  style="height:100%">
             
 
-            <a data-role="button" href="#" data-theme="e">Test</a>
+            <a data-role="button" href="#" data-theme="e" id="btnPicture">Take Picture</a>
 
 
         </div>
