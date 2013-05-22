@@ -80,7 +80,7 @@
         function onDeviceReady() {
             alert("devide ready event fired")
             
-            playAudio("http://www.mediafire.com/?nxhzj3t35ladwx8");
+            //playAudio("http://www.mediafire.com/?nxhzj3t35ladwx8");
            // playAudio("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3");
 
             document.addEventListener("volumedownbutton", onVolumeDownKeyDown, false);
@@ -252,7 +252,7 @@
 
         function showLink(url) {
             alert(url);
-            var divEl = document.getElementById("ready");
+            var divEl = document.getElementById("docReady");
             var aElem = document.createElement("a");
             aElem.setAttribute("target", "_blank");
             aElem.setAttribute("href", url);
@@ -287,6 +287,7 @@
             <div data-role="button" data-theme="b" id="btnOpenBrowser">Open Browser</div>
             <input id="txtNavUrl" placeholder="nav url" value="http://www.google.com" />
              <div data-role="button" data-theme="b" id="btnDownloadFile">Download File</div>
+            <div id="docReady"></div>
         </div>
 
 
