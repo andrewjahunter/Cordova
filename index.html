@@ -17,7 +17,7 @@
 
      <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" charset="utf-8">
-
+        var iabRef = null;
         // Wait for Cordova to load
         $(document).ready(function () {
             $("#btnPicture").on("click", function () {
@@ -65,6 +65,11 @@
             document.addEventListener("volumedownbutton", onVolumeDownKeyDown, false);
 
             document.addEventListener("offline", onOffline, false);
+
+            iabRef = window.open('http://apache.org', '_blank', 'location=yes');
+            iabRef.addEventListener('loadstart', iabLoadStart);
+            iabRef.addEventListener('loadstop', iabLoadStop);
+            iabRef.addEventListener('exit', iabClose);
         }
 
 
@@ -100,7 +105,7 @@
 
     <script>
         // Global InAppBrowser reference
-        var iabRef = null;
+      
         $("#btnOpenBrowswer").on("click", function () {
             iabRef = window.open($("#txtNavUrl").val(), '_blank', 'location=yes');
             iabRef.addEventListener('loadstart', iabLoadStart);
