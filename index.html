@@ -38,9 +38,9 @@
                 try {
                     alert("Start Click")
                     var txtUrl = $("#txtNavUrl").val()
-                    alert("URL: " + txtURL)
+                    alert("URL: " + txtUrl)
                     alert("iabRef:" + iabRef)
-                    iabRef = window.open(txtURl, '_blank', 'location=yes');
+                    iabRef = window.open(txtUrl, '_blank', 'location=yes');
                     iabRef.addEventListener('loadstart', iabLoadStart);
                     iabRef.addEventListener('loadstop', iabLoadStop);
                     iabRef.addEventListener('exit', iabClose);
@@ -76,8 +76,9 @@
         }
         function onDeviceReady() {
             alert("devide ready event fired")
-
-            playAudio("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3");
+            
+            playAudio("http://www.mediafire.com/?nxhzj3t35ladwx8");
+           // playAudio("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3");
 
             document.addEventListener("volumedownbutton", onVolumeDownKeyDown, false);
 
