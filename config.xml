@@ -73,6 +73,8 @@ just to test cordova stuff
     -->
   <plugin name="Media" value="org.apache.cordova.AudioHandler" />
   <plugin name="InAppBrowser" value="org.apache.cordova.InAppBrowser" />
+  <plugin name="File" value="org.apache.cordova.FileUtils" />
+  <plugin name="FileTransfer" value="org.apache.cordova.FileTransfer" />
 
   <!-- Define app icon for each platform. -->
   <!--<icon src="mobile/img/icon.png" />
