@@ -34,6 +34,22 @@
                 $.mobile.changePage("media.html", { transition: "slide" });
             });
 
+            $("#btnOpenBrowser").on("click", function () {
+                try {
+                    var txtUrl = $("#txtNavUrl").val()
+                    alert("URL: " + txtURL)
+                    alert("iabRef:" + iabRef)
+                    iabRef = window.open(txtURl, '_blank', 'location=yes');
+                    iabRef.addEventListener('loadstart', iabLoadStart);
+                    iabRef.addEventListener('loadstop', iabLoadStop);
+                    iabRef.addEventListener('exit', iabClose);
+                }
+                catch (err) {
+                    alert("Err: " + err)
+                };
+
+            });
+
 
 
 
@@ -106,21 +122,7 @@
     <script>
         // Global InAppBrowser reference
 
-        $("#btnOpenBrowser").on("click", function () {
-            try {
-                var txtUrl = $("#txtNavUrl").val()
-                alert("URL: " + txtURL)
-                alert("iabRef:" + iabRef)
-                iabRef = window.open(txtURl, '_blank', 'location=yes');
-                iabRef.addEventListener('loadstart', iabLoadStart);
-                iabRef.addEventListener('loadstop', iabLoadStop);
-                iabRef.addEventListener('exit', iabClose);
-            }
-            catch (err) {
-                alert("Err: " + err)
-            };
-            
-        });
+      
 
 
 
