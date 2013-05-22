@@ -1,0 +1,23 @@
+﻿<html>
+<head>
+    <title>Media Example</title>
+
+    <!--<script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"></script>-->
+
+</head>
+<body>
+    <div data-role="page" data-theme="g" id="pg_media">
+
+        <div data-role="content" style="padding: 15px">
+              <a href="#" data-role="button"  data-rel="back" >Back</a>
+            <a href="#" class="btn large" onclick="playAudio('http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3');">Play Audio</a>
+            <a href="#" class="btn large" onclick="pauseAudio();">Pause Playing Audio</a>
+            <a href="#" class="btn large" onclick="stopAudio();">Stop Playing Audio</a>
+            <p id="audio_position"></p>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
