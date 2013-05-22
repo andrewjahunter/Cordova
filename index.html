@@ -12,10 +12,10 @@
 
 
 
-   
 
 
-     <script type="text/javascript" src="cordova.js"></script>
+
+    <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" charset="utf-8">
         var iabRef = null;
         // Wait for Cordova to load
@@ -34,18 +34,18 @@
                 $.mobile.changePage("media.html", { transition: "slide" });
             });
 
-            
-
-            
 
 
-            
+
+
+
+
         });
 
         function onLoad() {
             document.addEventListener("deviceready", onDeviceReady, false);
 
-           
+
 
         }
 
@@ -61,7 +61,7 @@
             alert("devide ready event fired")
 
             playAudio("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3");
-            
+
             document.addEventListener("volumedownbutton", onVolumeDownKeyDown, false);
 
             document.addEventListener("offline", onOffline, false);
@@ -73,10 +73,10 @@
         }
 
 
-        
+
 
         function onPhotoSuccess(imageData) {
-            
+
             var image = document.getElementById('myImage');
             image.src = "data:image/jpeg;base64," + imageData;
         }
@@ -105,15 +105,24 @@
 
     <script>
         // Global InAppBrowser reference
-      
-        $("#btnOpenBrowswer").on("click", function () {
-            iabRef = window.open($("#txtNavUrl").val(), '_blank', 'location=yes');
-            iabRef.addEventListener('loadstart', iabLoadStart);
-            iabRef.addEventListener('loadstop', iabLoadStop);
-            iabRef.addEventListener('exit', iabClose);
+
+        $("#btnOpenBrowser").on("click", function () {
+            try {
+                var txtUrl = $("#txtNavUrl").val()
+                alert("URL: " + txtURL)
+                alert("iabRef:" + iabRef)
+                iabRef = window.open(txtURl, '_blank', 'location=yes');
+                iabRef.addEventListener('loadstart', iabLoadStart);
+                iabRef.addEventListener('loadstop', iabLoadStop);
+                iabRef.addEventListener('exit', iabClose);
+            }
+            catch (err) {
+                alert("Err: " + err)
+            };
+            
         });
 
-   
+
 
         function iabLoadStart(event) {
             alert(event.type + ' - ' + event.url);
@@ -130,121 +139,121 @@
             iabRef.removeEventListener('exit', iabClose);
         }
 
-       
+
 
     </script>
 
-   <script type="text/javascript" charset="utf-8">
+    <script type="text/javascript" charset="utf-8">
 
-       // Wait for Cordova to load
-       //
-       //document.addEventListener("deviceready", onDeviceReady, false);
+        // Wait for Cordova to load
+        //
+        //document.addEventListener("deviceready", onDeviceReady, false);
 
-       // Cordova is ready
-       //
-     
+        // Cordova is ready
+        //
 
-       // Audio player
-       //
-       var my_media = null;
-       var mediaTimer = null;
 
-       // Play audio
-       //
-       function playAudio(src) {
-           if (my_media == null) {
-               // Create Media object from src
-               my_media = new Media(src, onMediaSuccess, onMediaError);
-           } // else play current audio
-           // Play audio
-           my_media.play();
+        // Audio player
+        //
+        var my_media = null;
+        var mediaTimer = null;
 
-           // Update my_media position every second
-           if (mediaTimer == null) {
-               mediaTimer = setInterval(function () {
-                   // get my_media position
-                   my_media.getCurrentPosition(
-                       // success callback
-                       function (position) {
-                           if (position > -1) {
-                               setAudioPosition((position) + " sec");
-                           }
-                       },
-                       // error callback
-                       function (e) {
-                           console.log("Error getting pos=" + e);
-                           setAudioPosition("Error: " + e);
-                       }
-                   );
-               }, 1000);
-           }
-       }
+        // Play audio
+        //
+        function playAudio(src) {
+            if (my_media == null) {
+                // Create Media object from src
+                my_media = new Media(src, onMediaSuccess, onMediaError);
+            } // else play current audio
+            // Play audio
+            my_media.play();
 
-       // Pause audio
-       // 
-       function pauseAudio() {
-           if (my_media) {
-               my_media.pause();
-           }
-       }
+            // Update my_media position every second
+            if (mediaTimer == null) {
+                mediaTimer = setInterval(function () {
+                    // get my_media position
+                    my_media.getCurrentPosition(
+                        // success callback
+                        function (position) {
+                            if (position > -1) {
+                                setAudioPosition((position) + " sec");
+                            }
+                        },
+                        // error callback
+                        function (e) {
+                            console.log("Error getting pos=" + e);
+                            setAudioPosition("Error: " + e);
+                        }
+                    );
+                }, 1000);
+            }
+        }
 
-       // Stop audio
-       // 
-       function stopAudio() {
-           if (my_media) {
-               my_media.stop();
-           }
-           clearInterval(mediaTimer);
-           mediaTimer = null;
-       }
+        // Pause audio
+        // 
+        function pauseAudio() {
+            if (my_media) {
+                my_media.pause();
+            }
+        }
 
-       // onSuccess Callback
-       //
-       function onMediaSuccess() {
-           console.log("playAudio():Audio Success");
-       }
+        // Stop audio
+        // 
+        function stopAudio() {
+            if (my_media) {
+                my_media.stop();
+            }
+            clearInterval(mediaTimer);
+            mediaTimer = null;
+        }
 
-       // onError Callback 
-       //
-       function onMediaError(error) {
-           alert('code: ' + error.code + '\n' +
-                 'message: ' + error.message + '\n');
-       }
+        // onSuccess Callback
+        //
+        function onMediaSuccess() {
+            console.log("playAudio():Audio Success");
+        }
 
-       // Set audio position
-       // 
-       function setAudioPosition(position) {
-           document.getElementById('audio_position').innerHTML = position;
-       }
+        // onError Callback 
+        //
+        function onMediaError(error) {
+            alert('code: ' + error.code + '\n' +
+                  'message: ' + error.message + '\n');
+        }
 
-        </script>
+        // Set audio position
+        // 
+        function setAudioPosition(position) {
+            document.getElementById('audio_position').innerHTML = position;
+        }
 
-    
+    </script>
+
+
 </head>
 <body onload="onLoad()">
-    
-    <div data-role="page" data-theme="g" id="pg_index"  >
+
+    <div data-role="page" data-theme="g" id="pg_index">
 
 
 
-        <div data-role="content"  style="height:100%">
-            
+        <div data-role="content" style="height: 100%">
+
 
             <a data-role="button" href="#" data-theme="e" id="btnPicture">Take Picture2</a>
-                        <a data-role="button" href="#" data-theme="e" id="btnConnection">Check Network</a>
+            <a data-role="button" href="#" data-theme="e" id="btnConnection">Check Network</a>
 
             <img alt="" id="myImage" src="" width="100" height="100" />
             <div data-role="button" data-theme="b" id="btnMedia">Media22</div>
-            <div data-role="button" data-theme="b" id="btnOpenBrowswer">Open Browser</div>
-                                <input id="txtNavUrl"  placeholder="nav url" value="http://www.google.com" />
+            <div data-role="button" data-theme="b" id="btnOpenBrowser">Open Browser</div>
+            <input id="txtNavUrl" placeholder="nav url" value="http://www.google.com" />
 
         </div>
-       
+
 
 
     </div>
-  
-  
-  
+
+
+
 </body>
 </html>
